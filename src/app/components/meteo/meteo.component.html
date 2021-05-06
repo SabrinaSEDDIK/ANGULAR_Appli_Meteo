@@ -1,0 +1,31 @@
+<div class="row rounded" *ngIf="meteo; else na">
+  <div class="col-12 text-center mt-3">
+    <i [classList]="icons[meteo.weather[0].icon]"></i>
+  </div>
+  <div class="col-12 text-center fs-1">
+    {{meteo.weather[0].description | titlecase}}
+  </div>
+  <div class="col-12">
+    <ul class="list-group text-center">
+      <li class="list-group-item">Température ressentie : <span class="fs-4">{{ meteo.main.feels_like }}°</span></li>
+      <li class="list-group-item">Température : {{ meteo.main.temp_min }}° &gt; <span class="fs-4">{{ meteo.main.temp }}°</span> &gt; {{ meteo.main.temp_max }}°</li>
+      <li class="list-group-item">Humidité : {{ meteo.main.humidity }}</li>
+      <li class="list-group-item">Pression : {{ meteo.main.pressure }}hPa</li>
+      <li class="list-group-item">Vent : {{meteo.wind.deg}}° - {{meteo.wind.speed}}Km/h</li>
+    </ul>
+  </div>
+  <div class="col-12 mt-3">
+    <div class="alert alert-info text-center">
+      {{meteo.name | uppercase }} / {{ meteo.sys.country }}
+      - Levé du soleil : {{ meteo.sys.sunrise*1000 | date : 'HH:mm:ss' }}
+      - Couché du soleil : {{ meteo.sys.sunset*1000 | date : 'HH:mm:ss' }}
+    </div>
+  </div>
+</div>
+<ng-template #na>
+  <div class="row">
+    <div class="col">
+      <p class="text-center fs-2">Ville introuvable</p>
+    </div>
+  </div>
+</ng-template>

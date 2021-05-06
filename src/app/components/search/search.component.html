@@ -1,0 +1,19 @@
+<div class="row pt-3">
+  <div class="col">
+    <form ngForm>
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="label">
+          <i class="fas fa-sun"></i>
+        </span>
+        <input type="text"
+               class="form-control"
+               placeholder="Ville"
+               name="city"
+               aria-describedby="label"
+               [(ngModel)]="city"
+        >
+        <button (click)="searchCity(city)" class="btn btn-primary">Rechercher</button>
+      </div>
+    </form>
+  </div>
+</div>
